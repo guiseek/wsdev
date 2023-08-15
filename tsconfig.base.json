@@ -15,7 +15,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@wsdev/account/domain": ["libs/account/domain/src/index.ts"]
+      "@wsdev/account/data-source": ["libs/account/data-source/src/index.ts"],
+      "@wsdev/account/domain": ["libs/account/domain/src/index.ts"],
+      "@wsdev/account/resource-user": [
+        "libs/account/resource-user/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

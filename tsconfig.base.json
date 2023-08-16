@@ -15,11 +15,14 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@wsdev/account/data-access": ["libs/account/data-access/src/index.ts"],
       "@wsdev/account/data-source": ["libs/account/data-source/src/index.ts"],
       "@wsdev/account/domain": ["libs/account/domain/src/index.ts"],
+      "@wsdev/account/feature-user": ["libs/account/feature-user/src/index.ts"],
       "@wsdev/account/resource-user": [
         "libs/account/resource-user/src/index.ts"
-      ]
+      ],
+      "@wsdev/shared/data-access": ["libs/shared/data-access/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

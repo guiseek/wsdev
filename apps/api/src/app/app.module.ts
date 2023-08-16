@@ -5,6 +5,7 @@ import { AccountResourceUserModule } from '@wsdev/account/resource-user';
 import { UserImpl } from '@wsdev/account/data-source';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { env } from '../envs/env';
 
 @Module({
   imports: [
@@ -18,7 +19,7 @@ import { AppService } from './app.service';
       entities: [UserImpl],
       port: 5432,
     }),
-    AccountResourceUserModule
+    AccountResourceUserModule.forFeature(env.production),
   ],
   controllers: [AppController],
   providers: [AppService],

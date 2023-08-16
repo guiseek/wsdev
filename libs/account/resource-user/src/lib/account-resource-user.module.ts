@@ -1,23 +1,18 @@
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Module } from '@nestjs/common';
-import { DataSource } from 'typeorm';
-import { UserImpl } from '@wsdev/account/data-source';
-import { UserRepository, UserRepositoryImpl } from '@wsdev/account/data-source';
+import { DynamicModule, Module } from '@nestjs/common';
 import { AccountResourceUserController } from './account-resource-user.controller';
+import { getUserProviders } from './account-recourse-user.providers';
+import { UserImpl } from '@wsdev/account/data-source';
 
 @Module({
   imports: [TypeOrmModule.forFeature([UserImpl])],
   controllers: [AccountResourceUserController],
-  providers: [
-    {
-      provide: UserRepository,
-      useFactory(ds: DataSource) {
-        const repository = ds.getRepository(UserImpl)
-        return new UserRepositoryImpl(repository);
-      },
-      inject: [DataSource],
-    },
-  ],
-  exports: [],
 })
-export class AccountResourceUserModule {}
+export class AccountResourceUserModule {
+  static forFeature(production: boolean): DynamicModule {
+    return {
+      module: AccountResourceUserModule,
+      providers: [getUserProviders(production)],
+    };
+  }
+}
